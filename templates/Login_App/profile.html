@@ -1,0 +1,19 @@
+  {% extends 'base.html'%}
+  {% block title_block %}Your Profile {% endblock %}
+  {% block body_block %}
+  {% if user.user_profile %}
+  <img src="/media/{{user.user_profile.ProfilePic}}" class="rounded-circle" width="500px">
+  <br>
+  <a href="{% url 'Login_App:change_pro_pic'%}" class="btn btn-info btn-sm">Change Profile Pic</a>
+
+  {% else %}
+  <img src="/media/profile_pics/blankimage.png" class="rounded-circle" width="200px">
+  <br>
+  <a href="{% url 'Login_App:add_pro_pic'%}" class="btn btn-info btn-sm">Change Profile Pic</a>
+  {% endif %}
+  <h3>User Name: {{user.username}}</h3>
+  <h3>Name: {{user.first_name}} {{user.last_name}}</h3>
+  <h3>Email: {{user.email}}</h3>
+  <br>
+  <a href="{% url 'Login_App:change_profile' %}">Change Profile Info</a>
+  {% endblock %}

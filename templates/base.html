@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <title>{% block title_block %} Blogs {% endblock %}</title>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-primary bg-dark">
+  
+<ul class="navbar-nav">
+<li class="nav-item active">
+ <a class="nav-link" href="{% url 'index' %}"><img src="/media/logo.png" width='50px'></a>
+</li>
+<li class="nav-item active" >
+ <a class="nav-link" href="#"  >Bangladesh</a>
+</li>
+<li class="nav-item active" >
+ <a class="nav-link" href="#">World</a>
+</li>
+<li class="nav-item active" >
+ <a class="nav-link" href="#">Technology</a>
+</li>
+<li class="nav-item active" >
+ <a class="nav-link" href="#">Live Cricket Score</a>
+</li>
+
+
+{% if user.is_authenticated %}
+<div class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          @{{user.username}}
+  </a>
+  <div class="dropdown-menu" >
+
+   <a class="dropdown-item" href="{% url 'Login_App:profile' %}">Your Profile</a>
+   <a class="dropdown-item" href="{% url 'Blog_App:create_blog' %}">Write Blog</a>
+    <a class="dropdown-item" href="{% url 'Blog_App:my_blog' %}">My Blog</a>
+   <hr>
+   <a class="dropdown-item" href="{% url 'Login_App:logout' %}">Logout</a>
+ </div>
+
+
+{% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'Login_App:sign_up' %}">Sign Up</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'Login_App:login' %}">Login</a>
+</li>
+{% endif %}
+</ul>
+
+  
+</div>
+</nav>
+<div class="container" style="padding-top:20px">
+{% block body_block %}
+
+{% endblock %}
+</div>
+
+<footer class="page-footer font-small blue-grey lighten-5">
+
+  <div style="background-color: #21d192;">
+    <div class="container">
+
+       <div class="footer-copyright text-center text-black-50 py-3">© 2020 Copyright:
+    <a class="dark-grey-text" href="#"> Nahid Hasan</a>
+  </div>
+      </div>
+      <!-- Grid row-->
+
+    </div>
+  </div>
+
+ 
+
+
+
+</footer>
+
+
+</body>
+</html>
