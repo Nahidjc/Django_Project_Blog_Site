@@ -62,11 +62,14 @@ def Unliked(request,pk):
 class Myblogs(LoginRequiredMixin,TemplateView):
     template_name="Blog_App/my_blog.html"
 class UpdateBlogs(LoginRequiredMixin,UpdateView):
-    model=Blog
-    fields=('blog_title','blog_content','blog_image')
+    model = Blog
+    fields = ('blog_title','blog_content','blog_image')
     template_name='Blog_App/edit_blog.html'
     def get_success_url(self,**kwargs):
-        return reverse_lazy('Blog_App:edit_blog', kwargs={'slug':self.object.slug})
+        return reverse_lazy('Blog_App:blog_details', kwargs={'slug':self.object.slug})
+
+
+
 class DeleteBlog(LoginRequiredMixin,DeleteView):
     model=Blog
     template_name='Blog_App/delete_blog.html'
